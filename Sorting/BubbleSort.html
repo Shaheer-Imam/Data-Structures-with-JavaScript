@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bubble Sort</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+function bubbleSort(array){
+	var arrayLength = array.length,stop;
+	for (var i=0; i<arrayLength; i++){
+		for(var  j=0,stop = arrayLength-i; j<=i; j++){
+			if(array[i] < array[j]){
+				swap(array,i,j);
+			}
+		}
+	}
+	return array;
+}
+function swap(array, index1, index2){
+	var temp = array[index1];
+	array[index1] = array[index2];
+	array[index2] = temp;
+}
+var a = [6,1,2,4,3,5];
+bubbleSort(a);
+console.log(a);
+</script>
+</html>
