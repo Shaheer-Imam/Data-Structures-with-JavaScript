@@ -8,7 +8,7 @@ function BinaryTree(){
 	this.root = null;
 }
 
-BinaryTree.prototype.traverseInOder = function(){
+BinaryTree.prototype.traverseInOrder = function(){
 	traverseInOrderHelp(this.root);
 
 	function traverseInOrderHelp(node){
@@ -20,7 +20,7 @@ BinaryTree.prototype.traverseInOder = function(){
 	}
 }
 
-BinaryTree.prototype.traverseInOderIterative = function(){
+BinaryTree.prototype.traverseInOrderIterative = function(){
 	var current = this.root;
 	s=[];
 	done = false;
