@@ -25,7 +25,7 @@ AVLTree.prototype.setDepthBasedOnChildren = function(){
 
 AVLTree.prototype.rotateLL = function(){
     var valueBefore = this.value;
-    var rightBefore - this.right;
+    var rightBefore = this.right;
     this.value = this.left.value;
     this.right = this.left;
     this.left = this.left.left;
@@ -40,7 +40,7 @@ AVLTree.prototype.rotateLL = function(){
 
 AVLTree.prototype.rotateRR = function(){
     var valueBefore = this.value;
-    var leftBefore - this.left;
+    var leftBefore = this.left;
     this.value = this.right.value;
     this.left = this.right;
     this.right = this.right.right;
