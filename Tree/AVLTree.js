@@ -51,3 +51,62 @@ AVLTree.prototype.rotateRR = function(){
     this.update.InNewLocation();
 }
 
+// Balancing Tree
+
+AVLTree.prototype.balance = function(){
+    var ldepth = this.left == null ? 0 : this.left.depth;
+    var rdepth = this.right == null ? 0 : this.right.depth;
+    if(ldepth > rdepth + 1){
+        var lldepth = this.left.left == null ? 0 : this.left.left.depth;
+        var lrdepth = this.left.right == null ? 0 : this.left.right.depth;
+        if(lldepth<lrdepth){
+            this.left.rotateRR();
+        }
+        this.rotateLL();
+    }
+    else if(ldepth + 1 < rdepth){
+        var rrdepth = this.right.right == null ? 0 : this.right.right.depth;
+        var rldepth = this.right.left == null ? 0 : this.right.left.depth;
+        if(rldepth>rrdepth){
+            this.right.rotateLL();
+        }
+        this.rotateRR();
+    }
+}
+
+// Insertion
+
+AVLTree.prototype.insert = function(value){
+    var childInserted = false;
+    if(value==this.value){
+        return false;
+    }
+    else if(value<this.value){
+        if(this.left==null){
+            this.left=new AVLTree(value);
+            childInserted=true;
+        }
+        else{
+            childInserted=this.left.insert(value);
+            if(childInserted==true){
+                this.balance();
+            }
+        }
+    }
+    else if(value>this.value){
+        if(this.right==null){
+            this.right=new AVLTree(value);
+            childInserted=true;
+        }
+        else{
+            childInserted=this.right.insert(value);
+            if(childInserted==true){
+                this.balance();
+            }
+        }
+    }
+    if(childInserted==true){
+        this.setDepthBasedOnChildren();
+    }
+    return childInserted;
+}
