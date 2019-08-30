@@ -110,3 +110,47 @@ AVLTree.prototype.insert = function(value){
     }
     return childInserted;
 }
+
+//Deletion 
+
+AVLTree.prototype.remove = function(value){
+    return deleteRecursively(this,value);
+    function deleteRecursively(root,value){
+        if(!root){
+            return null;
+        }
+        else if(value<root.value){  
+            root.left=deleteRecursively(root.left,value);
+        }
+        else if(value>root.value){  
+            root.right=deleteRecursively(root.right,value);
+        }
+        else{
+            if(!root.left && !root.right){
+                return null;
+            }
+            else if(!root.left){
+                root=root.right;
+                return root;
+            }
+            else if(!root.right){
+                root=root.left;
+                return root;
+            }
+            else{
+                var temp = findMin(root.right);
+                root.value=temp.value;
+                root.right=deleteRecursively(root.right,temp.value);
+                return root;
+            }
+        }
+        root.updateInNewLocation();
+        return root;
+    }
+    function findMin(root){
+        while(root.left){
+            root = root.left;
+        }
+        return root;
+    }
+}
