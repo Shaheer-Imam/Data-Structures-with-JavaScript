@@ -29,7 +29,7 @@ var node1 = {
 var node2 = {
     value: 1,
     left: {
-        value: 0.
+        value: 0,
         left: {
         value: -1
     },
