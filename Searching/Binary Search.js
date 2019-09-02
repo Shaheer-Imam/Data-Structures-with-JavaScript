@@ -1,6 +1,6 @@
 function binarySearch(array,n){
     var lowIndex=0,
-        highIndex = array1.length-1;
+        highIndex = array.length-1;
     while(lowIndex<=highIndex){
         var midIndex=Math.floor((highIndex+lowIndex)/2);
         if(array[midIndex]==n){
