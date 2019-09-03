@@ -87,6 +87,22 @@ singlyLinkedList.prototype.display = function(){
 	}
 }
 
+singlyLinkedList.prototype.reverse = function(){
+    var node = this.head;
+    var prev = null;
+    while(node){
+        var temp=node.next;
+        node.next=prev;
+        prev=node;
+        if(!temp){
+            break;
+        }
+        node=temp;
+    }
+    return node;
+}
+
+
 var sll = new singlyLinkedList();
 sll.insert(4);
 sll.insert(22);
